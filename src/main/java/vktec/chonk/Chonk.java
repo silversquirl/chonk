@@ -9,7 +9,7 @@ import net.minecraft.util.math.ChunkPos;
 
 public class Chonk {
 	// Lasts for 8gt, one per chunk
-	public static final ChunkTicketType<ChunkPos> TICKET = ChunkTicketType.create("chonk", Comparator.comparingLong(ChunkPos::toLong), 8);
+	public static final ChunkTicketType<ChunkPos> TICKET = ChunkTicketType.create("chonk", Comparator.comparingLong(ChunkPos::toLong), 1);
 
 	public static void loadTicking(ServerWorld world, ChunkPos pos) {
 		load(world, pos, 1);
