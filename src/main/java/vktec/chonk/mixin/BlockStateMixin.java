@@ -18,7 +18,14 @@ import vktec.chonk.Chonk;
 public abstract class BlockStateMixin {
 	@Inject(method = "neighborUpdate", at = @At("HEAD"))
 	private void loadChunkOnUpdate(World world, BlockPos pos, Block block, BlockPos from, boolean idkWhatThisIs, CallbackInfo ci) {
+		// Only on the server
 		if (world.isClient()) return;
-		Chonk.loadTicking((ServerWorld)world, new ChunkPos(pos));
+
+		// Only across chunk borders
+		ChunkPos src = new ChunkPos(from);
+		ChunkPos dest = new ChunkPos(pos);
+		if (src.equals(dest)) return;
+
+		Chonk.loadTicking((ServerWorld)world, dest);
 	}
 }
