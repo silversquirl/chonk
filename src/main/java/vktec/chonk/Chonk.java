@@ -11,15 +11,16 @@ public class Chonk {
 	// Lasts for 8gt, one per chunk
 	public static final ChunkTicketType<ChunkPos> TICKET = ChunkTicketType.create("chonk", Comparator.comparingLong(ChunkPos::toLong), 8);
 
-	public static void loadTicking(ServerChunkManager manager, ChunkPos pos) {
-		load(manager, pos, 1);
+	public static void loadTicking(ServerWorld world, ChunkPos pos) {
+		load(world, pos, 1);
 	}
 
 	public static void loadEntityTicking(ServerWorld world, ChunkPos pos) {
-		load(world.getChunkManager(), pos, 2);
+		load(world, pos, 2);
 	}
 
-	private static void load(ServerChunkManager manager, ChunkPos pos, int level) {
+	private static void load(ServerWorld world, ChunkPos pos, int level) {
+		ServerChunkManager manager = world.getChunkManager();
 		manager.addTicket(Chonk.TICKET, pos, level, pos);
 
 		ChunkHolder holder = manager.getChunkHolder(pos.toLong());
