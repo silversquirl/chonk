@@ -1,5 +1,8 @@
 # chonk
 
-> vktec 27/02/2020
->
-> Random idea for how remote chunk loading could be implemented nicely: block updates into a border chunk loads it lazily for 8gt (makes permanent lazy loading possible, also allows instant wires etc to travel through unloaded chunks without breaking), triggering a dropper that's not facing into an inventory or a dispenser in a lazy chunk loads that chunk as entity processing for 8gt (allows remote loading of portal permaloaders, remote loaded entity processing chunks for pearl cannons, permaloaded entity processing chunks in the end, etc.)
+A server-side mod that adds simple, flexible remote chunk loading mechanics to Minecraft 1.16+.
+
+## Mechanics
+
+- Block updates crossing chunk borders load the destination chunk as `TICKING` (lazy) for for 1 gametick
+- Dispensing an item into the world loads the chunk the dropper or dispenser is in as `ENTITY_TICKING` for 1 gametick

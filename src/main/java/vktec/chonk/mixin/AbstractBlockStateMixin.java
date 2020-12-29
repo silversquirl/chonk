@@ -1,7 +1,7 @@
 package vktec.chonk.mixin;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import net.minecraft.util.math.BlockPos;
@@ -14,15 +14,15 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import vktec.chonk.Chonk;
 
-@Mixin(BlockState.class)
-public abstract class BlockStateMixin {
+@Mixin(AbstractBlock.AbstractBlockState.class)
+public abstract class AbstractBlockStateMixin {
 	@Inject(method = "neighborUpdate", at = @At("HEAD"))
-	private void loadChunkOnUpdate(World world, BlockPos pos, Block block, BlockPos from, boolean idkWhatThisIs, CallbackInfo ci) {
+	private void loadChunkOnUpdate(World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify, CallbackInfo ci) {
 		// Only on the server
 		if (world.isClient()) return;
 
 		// Only across chunk borders
-		ChunkPos src = new ChunkPos(from);
+		ChunkPos src = new ChunkPos(fromPos);
 		ChunkPos dest = new ChunkPos(pos);
 		if (src.equals(dest)) return;
 

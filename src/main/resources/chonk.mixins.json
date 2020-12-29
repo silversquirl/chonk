@@ -4,7 +4,7 @@
 	"package": "vktec.chonk.mixin",
 	"compatibilityLevel": "JAVA_8",
 	"mixins": [
-		"BlockStateMixin",
+		"AbstractBlockStateMixin",
 		"ItemDispenserBehaviorMixin"
 	],
 	"injectors": {
