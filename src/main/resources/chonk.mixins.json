@@ -5,7 +5,8 @@
 	"compatibilityLevel": "JAVA_8",
 	"mixins": [
 		"AbstractBlockStateMixin",
-		"ItemDispenserBehaviorMixin"
+		"ItemDispenserBehaviorMixin",
+		"ServerWorldMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
