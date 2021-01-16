@@ -8,4 +8,4 @@ For an overview of vanilla chunk loading mechanics in 1.14+, see [this page](htt
 
 - Block updates crossing chunk borders load the destination chunk as `TICKING` (lazy) for 1 gametick
 - Dispensing an item into the world loads the chunk the dropper or dispenser is in as `ENTITY_TICKING` for 1 gametick
-- An entity changing dimension loads the destination chunk as `TICKING` (lazy) for 1 gametick
+- An entity changing dimension loads the destination chunk as `TICKING` (lazy) for 1 gametick (nether portals will load for 299gt as normal)
