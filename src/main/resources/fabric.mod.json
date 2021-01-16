@@ -20,7 +20,6 @@
 	"mixins": [
 		"chonk.mixins.json"
 	],
-	"accessWidener": "chonk.accesswidener",
 
 	"depends": {
 		"fabricloader": ">=0.7.4",

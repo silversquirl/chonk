@@ -16,10 +16,6 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:0.10.8"
 }
 
-minecraft {
-	accessWidener = file("src/main/resources/chonk.accesswidener")
-}
-
 processResources {
 	inputs.property "version", project.version
 
