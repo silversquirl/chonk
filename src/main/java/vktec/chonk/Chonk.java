@@ -8,22 +8,17 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.ChunkPos;
 
 public class Chonk {
-	// Lasts for 1gt, one per chunk
-	public static final ChunkTicketType<ChunkPos> TICKET = ChunkTicketType.create("chonk", Comparator.comparingLong(ChunkPos::toLong), 1);
+	// Lasts for 1gt exactly, one per chunk
+	// The ticket time is 2gt here because the ticket isn't processed until one tick after it's created - it will last for exactly 1gt
+	public static final ChunkTicketType<ChunkPos> TICKET = ChunkTicketType.create("chonk", Comparator.comparingLong(ChunkPos::toLong), 2);
 
 	public static void loadTicking(ServerWorld world, ChunkPos pos) {
-		load(world, pos, 1);
+		ServerChunkManager manager = world.getChunkManager();
+		manager.addTicket(Chonk.TICKET, pos, 1, pos);
 	}
 
 	public static void loadEntityTicking(ServerWorld world, ChunkPos pos) {
-		load(world, pos, 2);
-	}
-
-	private static void load(ServerWorld world, ChunkPos pos, int level) {
 		ServerChunkManager manager = world.getChunkManager();
-		manager.addTicket(Chonk.TICKET, pos, level, pos);
-
-		ChunkHolder holder = manager.getChunkHolder(pos.toLong());
-		if (holder.getLevel() > 33 - level) manager.tick();
+		manager.addTicket(Chonk.TICKET, pos, 2, pos);
 	}
 }
