@@ -1,5 +1,7 @@
 # chonk
 
+[![Discord](https://img.shields.io/badge/chat%20on-discord-7289DA?logo=discord)](https://discord.gg/zEnfMVJqe6)
+
 A server-side mod that adds simple, flexible remote chunk loading mechanics to Minecraft 1.16+.
 
 ## Mechanics
